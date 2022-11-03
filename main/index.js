@@ -1,11 +1,11 @@
+const inquirer = require('inquirer');
+const path = require('path');
+const fs = require('fs');
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const team = [];
-
-const inquirer = require('inquirer');
-const path = require('path');
-const fs = require('fs');
 
 const createSite = require('./src/page-template');
 
@@ -238,4 +238,4 @@ const buildTeam = () => {
     fs.writeFileSync(outputPath, createSite(team), "utf-8");
 }
 
-promptManager();
+addManager();
