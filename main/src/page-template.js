@@ -5,16 +5,15 @@ const generateTeam = (team) => {
         console.log(manager);
         let managerHtml =
             `
-        <div> class="card">
-            <div class="card-header">
-            ${manager.name}
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Manager</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${manager.name}</h6>
+              <p class="card-text">ID: ${manager.employeeId}</p>
+              <p class="card-text">Email: ${manager.email}</p>
+              <p class="card-text">Phone Number: ${manager.phoneNumber}</p>
             </div>
-            <ul>
-                <li>ID: ${manager.ID}</li>
-                <li>Email: ${manager.email}</li>
-                <li>Office Number: ${manager.officeNumber}</li>
-            </ul>
-        </div>
+          </div>
 
         `;
         html.push(managerHtml)
@@ -23,19 +22,18 @@ const generateTeam = (team) => {
     const addEngineer = engineer => {
         console.log(engineer);
         let engineerHtml =
-            `
-        <div> class="card">
-            <div class="card-header">
-            ${engineer.name}
-            </div>
-            <ul>
-                <li>ID: ${engineer.ID}</li>
-                <li>Email: ${engineer.email}</li>
-                <li>Github Account: ${engineer.github}</li>
-            </ul>
+        `
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Engineer</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${engineer.name}</h6>
+          <p class="card-text">ID: ${engineer.employeeId}</p>
+          <p class="card-text">Email: ${engineer.email}</p>
+          <p class="card-text">Github: ${engineer.github}</p>
         </div>
+      </div>
 
-        `;
+    `;
         html.push(engineerHtml)
     }
 
@@ -44,19 +42,18 @@ const generateTeam = (team) => {
     const addIntern = intern => {
         console.log(intern);
         let internHtml =
-            `
-            <div> class="card">
-                <div class="card-header">
-                ${intern.name}
-                </div>
-                <ul>
-                    <li>ID: ${intern.ID}</li>
-                    <li>Email: ${intern.email}</li>
-                    <li>Github Account: ${intern.github}</li>
-                </ul>
-            </div>
-    
-            `;
+        `
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Intern</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${intern.name}</h6>
+          <p class="card-text">ID: ${intern.employeeId}</p>
+          <p class="card-text">Email: ${intern.email}</p>
+          <p class="card-text">Phone Number: ${intern.github}</p>
+        </div>
+      </div>
+
+    `;
         html.push(internHtml)
 
     }
@@ -78,20 +75,24 @@ const generateTeam = (team) => {
 };
 
 module.exports = team => {
-    return
-    `<!DOCTYPE html>
+    return`
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link rel="stylesheet" href="/main/dist/style.css">
         <title>Team Profile Generator</title>
     </head>
     <body>
-        <Header>
-            <h1>Team</h1>
-        </Header>
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Your Team</h1>
+      <p class="lead">Please review your team information</p>
+    </div>
+  </div>
         <main> ${generateTeam(team)} </main>
     </body>
     </html>

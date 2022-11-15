@@ -7,14 +7,14 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const team = [];
 
-const createSite = require('./src/page-template');
+const createSite = require('./src/page-template.js');
 
 const OUTPUT_DIR = path.resolve(__dirname, "output")
 const outputPath = path.join(OUTPUT_DIR, "team.html")
 
 const addManager = () => {
-    return inquirer.createPromptModule([
-        // possible issues with naming of inputs
+    return inquirer.prompt([
+        
         {
             type: 'input',
             name: 'name',
@@ -68,8 +68,7 @@ const addManager = () => {
             }
         }
 
-    ])
-        .then(answers => {
+    ]).then(answers => {
             console.log(answers);
             const manager = new Manager(answers.name, answers.employeeId, answers.email, answers.phoneNumber);
             team.push(manager);
@@ -156,8 +155,7 @@ const createEngineer = () => {
             }
         }
 
-    ])
-        .then(answers => {
+    ]).then(answers => {
             console.log(answers);
             const engineer = new Engineer(answers.name, answers.employeeId, answers.email, answers.github);
             team.push(engineer);
@@ -172,8 +170,8 @@ const createIntern = () => {
             type: 'input',
             name: 'name',
             message: 'Please enter Intern name',
-            validate: engineerName => {
-                if (engineerName) {
+            validate: internName => {
+                if (internName) {
                     return true;
                 } else {
                     console.log('Please enter Intern name');
@@ -221,10 +219,9 @@ const createIntern = () => {
             }
         }
 
-    ])
-        .then(answers => {
+    ]).then(answers => {
             console.log(answers);
-            const engineer = new Intern (answers.name, answers.employeeId, answers.email, answers.github);
+            const intern = new Intern (answers.name, answers.employeeId, answers.email, answers.github);
             team.push(intern);
             promptMenu();
         })
